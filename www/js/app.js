@@ -8,9 +8,9 @@ myApp.controller('addBooksCtrl', ['$scope', '$http',  function($scope, $http){
 
           $http({
               
-              method: 'GET',
+              method: 'POST',
               url: '../../app/functions.php',
-              data: { book: $scope.newNameBook, 
+              data: { book: $scope.book, 
               	      author: $scope.author, 
               	      genre: $scope.genre, 
               	      price: $scope.price, 

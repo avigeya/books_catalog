@@ -13,14 +13,8 @@ class Books {
 	public $description =" ";
 	public $price =" ";
 
-    private $host = DB_HOST;
-	private $name_db = DB_NAME ;
-	private $user = DB_USER;
-	private $password = DB_PASS;
-
-
-    function __construct(){
-        $this->name = $name;
+    function __construct($author, $book, $description, $genre, $price){
+        $this->book = $book;
         $this->genre = $genre;
         $this->author = $author;
         $this->description = $description;

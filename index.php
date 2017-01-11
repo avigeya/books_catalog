@@ -27,7 +27,7 @@
 							<form>
 								<div>
             						<label>Name book</label>
-            						<input type="text" ng-model="newNameBook">
+            						<input type="text" ng-model="book">
         						</div>
         						<div>
             						<label>Author</label>
