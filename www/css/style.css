@@ -1,0 +1,26 @@
+/*books style*/
+@import url('https://fonts.googleapis.com/css?family=Mr+Dafoe|Mrs+Sheppards|Yellowtail');
+body{
+	background-color: #f2f6ef;
+	color: #333;
+}
+h1,h3{
+	font-family: 'Yellowtail', cursive;
+}
+p{
+	/*font-family: 'Mr Dafoe', cursive;*/
+	/*font-family: 'Mrs Sheppards', cursive;*/
+	font-family: 'Arial', cursive;
+	font-size: 18px;
+}
+label{
+	width: 30%;
+}
+input[type="text"]{
+	width: 65%;
+	border-radius: 5px;
+}
+label, input{
+	padding: 3px 5px;
+	margin: 5px 0;
+}
