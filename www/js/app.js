@@ -9,7 +9,7 @@ myApp.controller('addBooksCtrl', ['$scope', '$http',  function($scope, $http){
           $http({
               
               method: 'POST',
-              url: '../../app/functions.php',
+              url: '../../api/functions.php',
               data: { book: $scope.book, 
               	      author: $scope.author, 
               	      genre: $scope.genre, 
@@ -20,11 +20,11 @@ myApp.controller('addBooksCtrl', ['$scope', '$http',  function($scope, $http){
               
           }).then(function (response) {
               
-              $scope.book = response.data;
+              //$scope.book = response.data;
               
           }, function (response) {
               
-              console.log(response.data,response.status);
+              ///console.log(response.data,response.status);
               
           });
           //console.log($scope.newNameBook);

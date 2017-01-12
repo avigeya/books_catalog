@@ -2,7 +2,8 @@
 
 	require_once 'classes/Books_class.php';
 
-	$postArray = (filter_input_array(INPUT_POST, $_POST));
+	$postArray = json_decode(file_get_contents('php://input'), true);
+
 	$author = $postArray['author'];
 	$book = $postArray['book'];
 	$description = $postArray['description'];
@@ -10,18 +11,18 @@
 	$price = $postArray['price'];
 	$typeAction = $postArray['typeAction'];
 
-	$bk = new Books($author, $book, $description, $genre, $price);
-	$bk->connect_to_db();
-
-
+	$bk = new Books();
+	$connect = $bk->connect_to_db();
 
 	if($typeAction == 'add'){
 		$bk->add_book($author, $book, $description, $genre, $price);
+
+
+
 	}
 
-
-	//var_dump($postArray);
-	die();
+	var_dump($postArray['author']);
+	//die();
 
 
 ?>
