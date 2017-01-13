@@ -21,58 +21,68 @@ class Books {
     public function connect_to_db(){
         $connect = mysqli_connect(DB_HOST ,DB_USER ,DB_PASS ,DB_NAME);
 
-          if (mysqli_connect_errno($connect))
-          {
-            die("Failed to connect:" . mysqli_connect_error());
-          }
+        if (mysqli_connect_errno($connect))
+        {
+          die("Failed to connect:" . mysqli_connect_error());
+        }
 
-          mysqli_set_charset($connect, "utf8");
+        mysqli_set_charset($connect, "utf8");
 
-            $sql = "CREATE TABLE IF NOT EXISTS `books` (
-                  `id` int(10) NOT NULL AUTO_INCREMENT,
-                  `book` varchar(40) DEFAULT NULL,
-                  `id_authors` varchar(40) DEFAULT NULL,
-                  `id_genres` varchar(40) DEFAULT NULL,
-                  `description` varchar(100) DEFAULT NULL,
-                  `price` float(20) DEFAULT NULL,
-                  PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
-            
-            $return = mysqli_query($connect, $sql);
+          $sql = "CREATE TABLE IF NOT EXISTS `books` (
+                `id` int(10) NOT NULL AUTO_INCREMENT,
+                `book` varchar(40) DEFAULT NULL,
+                `id_authors` varchar(40) DEFAULT NULL,
+                `id_genres` varchar(40) DEFAULT NULL,
+                `description` varchar(100) DEFAULT NULL,
+                `price` float(20) DEFAULT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+          
+          $return = mysqli_query($connect, $sql);
 
-            if(!$return){
-                echo "Error-1!";
-            }
+          $sql = "CREATE TABLE IF NOT EXISTS `authors` (
+                `id` int(10) NOT NULL AUTO_INCREMENT,
+                `author` varchar(40) DEFAULT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+          
+          $return = mysqli_query($connect, $sql);
 
-            $sql = "CREATE TABLE IF NOT EXISTS `authors` (
-                  `id` int(10) NOT NULL AUTO_INCREMENT,
-                  `author` varchar(40) DEFAULT NULL,
-                  PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
-            
-            $return = mysqli_query($connect, $sql);
+          $sql = "CREATE TABLE IF NOT EXISTS `genres` (
+                `id` int(10) NOT NULL AUTO_INCREMENT,
+                `genre` varchar(40) DEFAULT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+          
+          $return = mysqli_query($connect, $sql);
 
-            if(!$return){
-                echo "Error-2!";
-            }
-
-            $sql = "CREATE TABLE IF NOT EXISTS `genres` (
-                  `id` int(10) NOT NULL AUTO_INCREMENT,
-                  `genre` varchar(40) DEFAULT NULL,
-                  PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
-            
-            $return = mysqli_query($connect, $sql);
-            
-            if(!$return){
-                echo "Error-3!";
-            }
-
-          return $connect;
+        return $connect;
     }
 
     public function add_book($author, $book, $description, $genre, $price){
 
+      $connect = $this->connect_to_db();
+
+      $sql = "INSERT INTO `genres`(`genre`) VALUES ('$genre')";
+      $return = mysqli_query($connect, $sql);
+
+      $sql = "SELECT `id` from `genres` WHERE `genre` = '$genre'";
+      $return = mysqli_query($connect, $sql);
+      $return = $return->fetch_object();
+      $id_genres = $return->id;
+      
+      $sql = "INSERT INTO `authors`(`author`) VALUES ('$author')";
+      $return = mysqli_query($connect, $sql);
+
+      $sql = "SELECT `id` from `authors` WHERE `author` = '$author'";
+      $return = mysqli_query($connect, $sql);
+      $return = $return->fetch_object();
+      $id_authors = $return->id;
+
+      $sql = "INSERT INTO `books`(`book`, `description`, `price`, `id_authors` ,`id_genres`) 
+              VALUES ('$book','$description', '$price', '$id_authors', '$id_genres')
+              ";
+      $return = mysqli_query($connect, $sql);
     }
 
     public function delete_book(){
@@ -88,7 +98,6 @@ class Books {
     }
 
 
-    //Add, delete, update, connect with DB
 }
 
 

@@ -16,12 +16,9 @@
 
 	if($typeAction == 'add'){
 		$bk->add_book($author, $book, $description, $genre, $price);
-
-
-
 	}
 
-	var_dump($postArray['author']);
+	//var_dump($postArray);
 	//die();
 
 
