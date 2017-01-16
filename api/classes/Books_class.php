@@ -93,8 +93,16 @@ class Books {
         
     }
 
-    public function print_books(){
+    public function get_all_books(){
         
+    }
+
+    public function get_all_genre(){
+
+    }
+
+    public function get_all_author(){
+      
     }
 
 

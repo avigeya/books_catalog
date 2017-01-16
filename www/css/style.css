@@ -16,11 +16,13 @@ p{
 label{
 	width: 30%;
 }
-input[type="text"]{
+input[type="text"], select{
 	width: 65%;
 	border-radius: 5px;
+
 }
-label, input{
+label, input, select{
 	padding: 3px 5px;
 	margin: 5px 0;
 }
+
