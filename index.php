@@ -26,11 +26,15 @@
         						</div>
         						<div>
             						<label>Author</label>
-            						<select class="selectpicker" data-ng-model="myAuthors" data-ng-options="author.id as  author.name for author in authors "></select>
+            						<select class="selectpicker">
+            							<option data-ng-repeat="author in authors" value="{{author.id}}">{{author.name}}</option>
+            						</select>
         						</div>
         						<div>
             						<label>Genre</label>
-            						<select class="selectpicker" data-ng-model="myGenres" data-ng-options="genre.id as genre.name for genre in genres "></select>
+            						<select class="selectpicker">
+            							<option data-ng-repeat="genre in genres" value="{{genre.id}}">{{genre.name}}</option>
+            						</select>
         						</div>
         						<div>
             						<label>Price</label>
@@ -43,6 +47,38 @@
         						<input class="btn btn-lg btn-default" type="button" value="Add" ng-click="addBook()">
 							</form>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+					<h3>Add New Author</h3>
+					<div data-ng-controller="addAuthorCtrl">
+						<form>
+							<div>
+	    						<label>Author</label>
+	    						<input type="text" name="addNewAuthor" data-ng-model="newAuthor">
+							</div>
+							<input class="btn btn-lg btn-default" type="button" value="Add Author" ng-click="addAuthor()">
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+					<h3>Add New Genre</h3>
+					<div data-ng-controller="addGenreCtrl">
+						<form>
+							<div>
+								<label>Genre</label>
+								<input type="text" name="addNewGenre" data-ng-model="newGenre">
+							</div>
+							<input class="btn btn-lg btn-default" type="button" value="Add Genre" ng-click="addGenre()">
+						</form>
 					</div>
 				</div>
 			</div>

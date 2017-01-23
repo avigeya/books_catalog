@@ -18,8 +18,12 @@
 		$bk->add_book($author, $book, $description, $genre, $price);
 	}
 
-	//var_dump($postArray);
-	//die();
+	if($typeAction == 'add_new_author'){
 
+	}
+
+	if($typeAction == 'add_new_genre'){
+
+	}
 
 ?>

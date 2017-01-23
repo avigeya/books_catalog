@@ -51,4 +51,59 @@ angular.module('startBooks.controllers', [])
     $scope.myGenres = 2;
 
 
+}])
+
+.controller('addAuthorCtrl', ['$scope', '$http',  function($scope, $http){
+
+  $scope.addAuthor = function() {
+
+          $http({
+              
+              method: 'POST',
+              url: '../../api/functions.php',
+              data: { 
+                      author: $scope.author, 
+                      typeAction: 'newAuthor' 
+                  }
+              
+          }).then(function (response) {
+              
+              //$scope.book = response.data;
+              
+          }, function (response) {
+              
+              ///console.log(response.data,response.status);
+              
+          });
+          //console.log($scope.newNameBook);
+    };
+
+}])
+
+.controller('addGenreCtrl', ['$scope', '$http',  function($scope, $http){
+
+  $scope.addAuthor = function() {
+
+          $http({
+              
+              method: 'POST',
+              url: '../../api/functions.php',
+              data: { 
+                      genre: $scope.genre, 
+                      typeAction: 'newGenre' 
+                  }
+              
+          }).then(function (response) {
+              
+              //$scope.book = response.data;
+              
+          }, function (response) {
+              
+              ///console.log(response.data,response.status);
+              
+          });
+          //console.log($scope.newNameBook);
+    };
+
 }]);
+
