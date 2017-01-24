@@ -59,28 +59,20 @@ class Books {
         return $connect;
     }
 
-    public function add_book($author, $book, $description, $genre, $price){
+    public function add_book($id_author, $book, $description, $id_genre, $price){
 
       $connect = $this->connect_to_db();
-
-      $sql = "INSERT INTO `genres`(`genre`) VALUES ('$genre')";
-      $return = mysqli_query($connect, $sql);
-
-      $sql = "SELECT `id` from `genres` WHERE `genre` = '$genre'";
-      $return = mysqli_query($connect, $sql);
-      $return = $return->fetch_object();
-      $id_genres = $return->id;
       
-      $sql = "INSERT INTO `authors`(`author`) VALUES ('$author')";
+     /* $sql = "INSERT INTO `authors`(`author`) VALUES ('$author')";
       $return = mysqli_query($connect, $sql);
 
       $sql = "SELECT `id` from `authors` WHERE `author` = '$author'";
       $return = mysqli_query($connect, $sql);
       $return = $return->fetch_object();
-      $id_authors = $return->id;
+      $id_authors = $return->id;*/
 
       $sql = "INSERT INTO `books`(`book`, `description`, `price`, `id_authors` ,`id_genres`) 
-              VALUES ('$book','$description', '$price', '$id_authors', '$id_genres')
+              VALUES ('$book','$description', '$price', '$id_author', '$id_genre')
               ";
       $return = mysqli_query($connect, $sql);
     }
@@ -103,6 +95,19 @@ class Books {
 
     public function get_all_author(){
       
+    }
+
+    public function add_new_author(){
+
+      $connect = $this->connect_to_db();
+
+      $sql = "INSERT INTO `authors`(`author`) VALUES ('$author')";
+      $return = mysqli_query($connect, $sql);
+
+    }
+
+    public function add_new_author(){
+
     }
 
 

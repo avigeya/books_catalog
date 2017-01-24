@@ -19,7 +19,7 @@
 	}
 
 	if($typeAction == 'add_new_author'){
-
+		$bk->add_new_author();
 	}
 
 	if($typeAction == 'add_new_genre'){
